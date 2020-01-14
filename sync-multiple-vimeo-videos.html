@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://player.vimeo.com/api/player.js"></script>
+  <script type="text/javascript">
+
+  function main() {
+    window.paused = true;
+    updatePlayButton();
+  }
+
+  function updatePlayButton() {
+    document.getElementById('playerButton').textContent = window.paused? '⏵ Play': '⏸ Pause';
+  }
+
+  function playButton() {
+    const players = [];
+    for (const p of ['video1', 'video2']) players.push(new Vimeo.Player(document.getElementById(p)));  
+
+    for (const p of players) window.paused? p.play(): p.pause();
+  
+    window.paused = !window.paused;
+    updatePlayButton();
+  }
+  </script>
+  <style type="text/css">
+  #gridContainer { 
+    display: grid;
+    grid: 1fr / auto-flow;
+  }
+  #gridContainer > div {
+    
+  }
+  </style>
+  <title></title>
+</head>
+<body onload='main()'>
+  <div id='gridContainer'>
+    <!-- video 1 -->
+    <div>
+      <iframe src="https://player.vimeo.com/video/226053498?api=1"
+      width="320" height="180" frameborder="0" allow=
+      "autoplay; fullscreen" allowfullscreen id='video1' name=
+      "video1"></iframe>
+      <p><a href="https://vimeo.com/226053498">Test Video</a> from
+      <a href="https://vimeo.com/user41261490">Devo H.</a> on
+      <a href="https://vimeo.com">Vimeo</a>.</p>
+    </div>
+    <!-- video 2 -->
+    <div>
+      <iframe src="https://player.vimeo.com/video/226053498?api=1"
+      width="320" height="180" frameborder="0" allow=
+      "autoplay; fullscreen" allowfullscreen id='video2' name=
+      "video2"></iframe>
+      <p><a href="https://vimeo.com/226053498">Test Video</a> from
+      <a href="https://vimeo.com/user41261490">Devo H.</a> on
+      <a href="https://vimeo.com">Vimeo</a>.</p>
+    </div>
+  </div>
+  <div>
+    <button id="playerButton" onclick="playButton()">Loading…</button>
+  </div>
+</body>
+</html>
