@@ -19,7 +19,8 @@
     const elements = document.getElementById('gridContainer').getElementsByTagName('iframe');
     for (const p of elements) players.push(new Vimeo.Player(p));
 
-    for (const p of players) window.paused? p.play(): p.pause();
+    if (window.paused) for (const p of players) p.play();
+    else for (const p of players) p.pause();
   
     window.paused = !window.paused;
     updatePlayButton();
