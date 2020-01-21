@@ -6,26 +6,8 @@
   <script type="text/javascript">
 
   function main() {
-    const search = window.location.search;
-    const params = new URLSearchParams(search);
-    const videos = params.has('video')? params.getAll('video') : ['226053498', '226053498'];
-    window.videos = videos;
     window.paused = true;
     updatePlayButton();
-
-    const container = document.getElementById('gridContainer');
-    for (id of videos) container.appendChild(getVideoElement(id));
-  }
-
-  function getVideoElement(id) {
-    const iframe = document.createElement('iframe');
-    iframe.src = 'https://player.vimeo.com/video/'+ id +'?api=1';
-    iframe.width = 320; iframe.height=180; iframe.freameborder=0;
-    iframe.allow = 'autoplay; fullscreen'; iframe.allowfullscreen=true;
-    iframe.id = id;
-    const div = document.createElement('div');
-    div.appendChild(iframe);
-    return div;
   }
 
   function updatePlayButton() {
@@ -53,9 +35,30 @@
   }
   </style>
   <title>syncPlayer</title>
+  <meta name='author' content='Tomer Cohen https://tomercohen.com'>
 </head>
 <body onload='main()'>
   <div id='gridContainer'>
+      <!-- video 1   -->
+      <div>
+
+      <iframe src="https://player.vimeo.com/video/155273233" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      <p><a href="https://vimeo.com/155273233">JibJab RickRoll</a> from <a href="https://vimeo.com/saraclemens">Sara Clemens</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+      <p></p>
+
+      </div>
+
+      <!-- video 2   -->
+      <div>
+
+      <iframe src="https://player.vimeo.com/video/155273233" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      <p><a href="https://vimeo.com/155273233">JibJab RickRoll</a> from <a href="https://vimeo.com/saraclemens">Sara Clemens</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+      <p></p>
+
+      </div>
+      <!-- video n   -->
+      <!-- video n+1 -->
+
   </div>
   <div>
     <button id="playerButton" onclick="playButton()">Loading…</button>
